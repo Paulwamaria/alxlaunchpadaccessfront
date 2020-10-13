@@ -1,0 +1,9 @@
+[build]
+    commnad = "yarn"
+    publish = "/build"
+    base = "alx-accessor"
+
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
