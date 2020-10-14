@@ -1,13 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import Mynavbar from "./componets/layout/MyNavbar";
 
-function App() {
-  return (
-    <div className="App">
-      <h1 className="text-success">Welcome to ALX-Accessor home page, </h1>
-      <h3 className="text-warning">The website is under construction</h3>
-    </div>
-  );
+export class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="App container-fluid">
+          <Mynavbar />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
