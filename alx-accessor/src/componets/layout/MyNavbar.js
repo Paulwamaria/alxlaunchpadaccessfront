@@ -9,8 +9,16 @@ import ResetPassword from "../auth/ResetPassword";
 import ResetPasswordConfirm from "../auth/ResetPasswordConfirm";
 import About from "./About";
 import Licence from "./Licence";
+// import { checkAuthStatus } from "../../actions/auth";
+import { connect } from "react-redux";
 
 export class MyNavbar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
     return (
       <div>
@@ -78,4 +86,16 @@ export class MyNavbar extends Component {
   }
 }
 
-export default MyNavbar;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.authReducer.isAuthenticated,
+  };
+};
+
+const mapDispatchToProps = (dispactch) => {
+  return {
+    //checkAuthStatus
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyNavbar);
