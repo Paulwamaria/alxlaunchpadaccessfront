@@ -8,6 +8,7 @@ import Activate from "../auth/Activate";
 import ResetPassword from "../auth/ResetPassword";
 import ResetPasswordConfirm from "../auth/ResetPasswordConfirm";
 import About from "./About";
+import Licence from "./Licence";
 
 export class MyNavbar extends Component {
   render() {
@@ -51,6 +52,10 @@ export class MyNavbar extends Component {
           </Route>
           <Route exact path="/about">
             <About />
+          </Route>
+
+          <Route exact path="/licence">
+            <Licence />
           </Route>
           <Route exact path="/login">
             <Login />
