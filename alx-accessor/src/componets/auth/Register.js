@@ -106,7 +106,7 @@ export class Register extends Component {
                   type="text"
                   id="rePassword"
                   name="rePassword"
-                  value={this.state.password}
+                  value={this.state.rePassword}
                   onChange={this.handleChange}
                 />
               </div>
