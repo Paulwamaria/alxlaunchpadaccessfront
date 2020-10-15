@@ -47,13 +47,15 @@ export class MyNavbar extends Component {
                   <Dropdown.Menu>
                     {this.props.isAuthenticated ? (
                       <Fragment>
-                        <Dropdown.Item onClick={this.props.logout}>logout</Dropdown.Item>
+                        <Dropdown.Item onClick={this.props.logout}>
+                          logout
+                        </Dropdown.Item>
                         <Dropdown.Item href="/">Admin</Dropdown.Item>
                       </Fragment>
                     ) : (
                       <Fragment>
                         <Dropdown.Item href="/login">Login</Dropdown.Item>
-                        <Dropdown.Item href="/sign up">Sign Up</Dropdown.Item>
+                        <Dropdown.Item href="/register">Sign Up</Dropdown.Item>
                       </Fragment>
                     )}
                   </Dropdown.Menu>
