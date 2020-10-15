@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link , Redirect} from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import {login, checkAuthStatus} from "../../actions/auth"
+import { login } from "../../actions/auth";
 
 export class Login extends Component {
   constructor(props) {
@@ -21,14 +21,14 @@ export class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.login(this.state.email,this.state.password)
-    console.log(this.state.email, this.state.password)
+    this.props.login(this.state.email, this.state.password);
+    console.log(this.state.email, this.state.password);
   };
 
   render() {
- if(this.props.isAuthenticated){
-     return <Redirect to="/" />
- }
+    if (this.props.isAuthenticated) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="container-fluid">
         <div className="row">
@@ -85,14 +85,13 @@ export class Login extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated:state.authReducer.isAuthenticated,
+    isAuthenticated: state.authReducer.isAuthenticated,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login:(email, password)=>dispatch(login(email, password)),
-    checkAuthStatus: ()=>dispatch(checkAuthStatus),
+    login: (email, password) => dispatch(login(email, password)),
   };
 };
 
