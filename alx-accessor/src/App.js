@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Mynavbar from "./componets/layout/MyNavbar";
 import Footer from "./componets/layout/Footer";
 import { connect } from "react-redux";
-import { load_user, checkAuthStatus } from "./actions/auth";
+import { loadUser, checkAuthStatus } from "./actions/auth";
 
 export class App extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     checkAuthStatus: () => dispatch(checkAuthStatus()),
-    loadUser: () => dispatch(load_user()),
+    loadUser: () => dispatch(loadUser()),
   };
 };
 

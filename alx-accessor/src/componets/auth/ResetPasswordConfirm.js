@@ -24,10 +24,9 @@ export class ResetPasswordConfirm extends Component {
     event.preventDefault();
     const uid = this.props.match.params.uid;
     const token = this.props.match.params.token;
-    const new_password = this.state.newPassword;
-    const re_new_password = this.state.reNewPassword;
-    console.log(uid, token);
-    this.props.resetPasswordConfirm(uid, token, new_password, re_new_password);
+    const newPassword = this.state.newPassword;
+    const reNewPassword = this.state.reNewPassword;
+    this.props.resetPasswordConfirm(uid, token, newPassword, reNewPassword);
     this.setState({
       requestSent: true,
     });

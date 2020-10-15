@@ -55,7 +55,7 @@ export const checkAuthStatus = () => async (dispatch) => {
 };
 
 // LOAD USER ACTION
-export const load_user = () => async (dispatch) => {
+export const loadUser = () => async (dispatch) => {
   if (localStorage.getItem("access")) {
     const config = {
       headers: {
@@ -70,13 +70,11 @@ export const load_user = () => async (dispatch) => {
         `${process.env.REACT_APP_API_URL}/auth/users/me/`,
         config
       );
-      console.log(response);
       dispatch({
         type: LOAD_USER_SUCCESS,
         payload: response.data,
       });
     } catch (err) {
-      console.log(err.message);
       dispatch({
         type: LOAD_USER_FAIL,
       });
@@ -171,7 +169,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: response.data,
     });
     //LOAD THE USER AFTER LOGIN
-    dispatch(load_user());
+    dispatch(loadUser());
   } catch (err) {
     dispatch({
       type: LOGIN_FAIL,
@@ -209,8 +207,8 @@ export const resetPassword = (email) => async (dispatch) => {
 export const resetPasswordConfirm = (
   uid,
   token,
-  new_password,
-  re_new_password
+  newPassword,
+  reNewPassword
 ) => async (dispatch) => {
   const config = {
     headers: {
@@ -220,8 +218,8 @@ export const resetPasswordConfirm = (
   const body = JSON.stringify({
     uid,
     token,
-    new_password,
-    re_new_password,
+    newPassword,
+    reNewPassword,
   });
   try {
     const response = await axios.post(

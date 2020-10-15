@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import {signup, checkAuthStatus } from "../../actions/auth";
+import { signup, checkAuthStatus } from "../../actions/auth";
 
 export class Register extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export class Register extends Component {
       email: "",
       password: "",
       rePassword: "",
-      accountCreated:false,
+      accountCreated: false,
     };
   }
 
@@ -25,11 +25,11 @@ export class Register extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const {firstName, lastName, email, password, re_password} = this.state
-    this.props.signup(firstName, lastName, email, password, re_password);
+    const { firstName, lastName, email, password, rePassword } = this.state;
+    this.props.signup(firstName, lastName, email, password, rePassword);
     this.setState({
-        accountCreated:true
-    })
+      accountCreated: true,
+    });
   };
 
   render() {
@@ -138,7 +138,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (firstName, lastName, email, password, rePassword) => dispatch(signup(firstName, lastName, email, password, rePassword)),
+    signup: (firstName, lastName, email, password, rePassword) =>
+      dispatch(signup(firstName, lastName, email, password, rePassword)),
     checkAuthStatus: () => dispatch(checkAuthStatus()),
   };
 };

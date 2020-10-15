@@ -22,7 +22,6 @@ export class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.login(this.state.email, this.state.password);
-    console.log(this.state.email, this.state.password);
   };
 
   render() {
