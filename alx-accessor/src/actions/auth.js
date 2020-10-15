@@ -191,7 +191,6 @@ export const resetPassword = (email) => async (dispatch) => {
       body,
       config
     );
-    console.log(response);
     dispatch({
       type: PASSWORD_RESET_SUCCESS,
       payload: response.data,
