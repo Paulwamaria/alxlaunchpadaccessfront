@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
@@ -9,7 +9,7 @@ import ResetPassword from "../auth/ResetPassword";
 import ResetPasswordConfirm from "../auth/ResetPasswordConfirm";
 import About from "./About";
 import Licence from "./Licence";
-// import { checkAuthStatus } from "../../actions/auth";
+import { logout } from "../../actions/auth";
 import { connect } from "react-redux";
 
 export class MyNavbar extends Component {
@@ -45,9 +45,17 @@ export class MyNavbar extends Component {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="/login">Login</Dropdown.Item>
-                    <Dropdown.Item href="/sign up">Sign Up</Dropdown.Item>
-                    <Dropdown.Item href="/">Admin</Dropdown.Item>
+                    {this.props.isAuthenticated ? (
+                      <Fragment>
+                        <Dropdown.Item onClick={this.props.logout}>logout</Dropdown.Item>
+                        <Dropdown.Item href="/">Admin</Dropdown.Item>
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        <Dropdown.Item href="/login">Login</Dropdown.Item>
+                        <Dropdown.Item href="/sign up">Sign Up</Dropdown.Item>
+                      </Fragment>
+                    )}
                   </Dropdown.Menu>
                 </Dropdown>
               </li>
@@ -94,7 +102,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispactch) => {
   return {
-    //checkAuthStatus
+    logout: () => dispactch(logout()),
   };
 };
 
