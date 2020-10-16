@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 import { connect } from "react-redux";
 import { getJokes } from "../../actions/Joke";
+import Slider from "./Slider"
 
 export class Joke extends Component {
   constructor(props) {
@@ -10,24 +11,33 @@ export class Joke extends Component {
   }
   componentDidMount = () => {
     this.props.getJokes();
+   
   };
 
   render() {
+    const jokes = this.props.jokes;
     return (
       <Fragment>
-        {this.props.dataLoaded ? (
-          this.props.jokes.map((joke) => (
-            <div id={joke.id}>
-              {joke.id}
-              <hr />
-              {joke.setup},{joke.punchline}
-            </div>
-          ))
-        ) : (
-          <div>
-            <h1>Jokes Not Loaded Yet</h1>
-          </div>
-        )}
+           <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }} />
+          <Slider
+            options={{
+              autoPlay: 8000,
+              fade:true,
+              pauseAutoPlayOnHover: true,
+              wrapAround: true,
+              fullscreen: true,
+              adaptiveHeight: true,
+            }}
+          >
+            {jokes.map((joke, index) => (
+              <div className="card text-center mt-3" key={index}>
+                <p className="mt=5 text-center">{joke.setup}...</p>
+                <p><span className="text-success">{joke.punchline}</span></p>
+              </div>
+            ))}
+          </Slider>
+        </div>
       </Fragment>
     );
   }
