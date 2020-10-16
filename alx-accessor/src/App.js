@@ -5,6 +5,8 @@ import Mynavbar from "./componets/layout/MyNavbar";
 import Footer from "./componets/layout/Footer";
 import { connect } from "react-redux";
 import { loadUser, checkAuthStatus } from "./actions/auth";
+import Joke from "./componets/jokes/Joke";
+import { getJokes } from "./actions/Joke";
 
 export class App extends Component {
   constructor(props) {
@@ -15,12 +17,14 @@ export class App extends Component {
   componentDidMount = () => {
     this.props.loadUser();
     this.props.checkAuthStatus();
+    this.props.getJokes();
   };
   render() {
     return (
       <Router>
         <div className="App container-fluid">
           <Mynavbar />
+          <Joke />
           <Footer />
         </div>
       </Router>
@@ -38,6 +42,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     checkAuthStatus: () => dispatch(checkAuthStatus()),
     loadUser: () => dispatch(loadUser()),
+    getJokes: () => dispatch(getJokes()),
   };
 };
 
