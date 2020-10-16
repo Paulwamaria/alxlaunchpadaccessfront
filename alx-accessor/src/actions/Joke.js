@@ -1,4 +1,4 @@
-import Axios from "axios";
+import axios from "axios";
 import { GET_JOKE_SUCCESS, GET_JOKE_FAIL } from "../types/Types";
 
 // GET JOKE ACTION
@@ -9,7 +9,7 @@ export const getJokes = () => async (dispatch) => {
     },
   };
   try {
-    const response = await Axios.get(
+    const response = await axios.get(
       "https://official-joke-api.appspot.com/jokes/ten",
       config
     );
