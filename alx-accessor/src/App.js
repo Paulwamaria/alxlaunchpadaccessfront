@@ -5,6 +5,7 @@ import Mynavbar from "./componets/layout/MyNavbar";
 import Footer from "./componets/layout/Footer";
 import { connect } from "react-redux";
 import { loadUser, checkAuthStatus } from "./actions/auth";
+import Joke from "./componets/jokes/Joke";
 
 export class App extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export class App extends Component {
       <Router>
         <div className="App container-fluid">
           <Mynavbar />
+          <Joke />
           <Footer />
         </div>
       </Router>
