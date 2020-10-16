@@ -6,7 +6,7 @@ import Footer from "./componets/layout/Footer";
 import { connect } from "react-redux";
 import { loadUser, checkAuthStatus } from "./actions/auth";
 import Joke from "./componets/jokes/Joke";
-import {getJokes} from "./actions/Joke"
+import { getJokes } from "./actions/Joke";
 
 export class App extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export class App extends Component {
   componentDidMount = () => {
     this.props.loadUser();
     this.props.checkAuthStatus();
-    this.props.getJokes()
+    this.props.getJokes();
   };
   render() {
     return (
@@ -42,7 +42,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     checkAuthStatus: () => dispatch(checkAuthStatus()),
     loadUser: () => dispatch(loadUser()),
-    getJokes:()=>dispatch(getJokes())
+    getJokes: () => dispatch(getJokes()),
   };
 };
 

@@ -2,12 +2,14 @@ import { GET_JOKE_SUCCESS, GET_JOKE_FAIL } from "../types/Types";
 
 const initialState = {
   dataLoaded: false,
-  jokes: [{
-    "id": 246,
-    "type": "general",
-    "setup": "What does a clock do when it's hungry?",
-    "punchline": "It goes back four seconds!"
-    },],
+  jokes: [
+    {
+      id: 246,
+      type: "general",
+      setup: "What does a clock do when it's hungry?",
+      punchline: "It goes back four seconds!",
+    },
+  ],
 };
 
 const jokeReucer = (state = initialState, action) => {

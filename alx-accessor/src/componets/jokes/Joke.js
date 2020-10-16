@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from "react";
 import { connect } from "react-redux";
 import { getJokes } from "../../actions/Joke";
-import Slider from "./Slider"
+import Slider from "./Slider";
 
 export class Joke extends Component {
   constructor(props) {
@@ -11,19 +11,18 @@ export class Joke extends Component {
   }
   componentDidMount = () => {
     this.props.getJokes();
-   
   };
 
   render() {
     const jokes = this.props.jokes;
     return (
       <Fragment>
-           <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }} />
+        <div>
+          <div />
           <Slider
             options={{
               autoPlay: 8000,
-              fade:true,
+              fade: true,
               pauseAutoPlayOnHover: true,
               wrapAround: true,
               fullscreen: true,
@@ -32,8 +31,10 @@ export class Joke extends Component {
           >
             {jokes.map((joke, index) => (
               <div className="card text-center mt-3" key={index}>
-                <p className="mt=5 text-center">{joke.setup}...</p>
-                <p><span className="text-success">{joke.punchline}</span></p>
+                <p className="mt-5 text-center">{joke.setup}...</p>
+                <p className="mb-5">
+                  <span className="text-success">{joke.punchline}</span>
+                </p>
               </div>
             ))}
           </Slider>
