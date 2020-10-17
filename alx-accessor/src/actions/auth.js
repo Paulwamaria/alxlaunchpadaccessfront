@@ -104,7 +104,7 @@ export const signup = (
     firstName,
     lastName,
     password,
-    rePassword,
+    re_password: rePassword,
   });
 
   try {
