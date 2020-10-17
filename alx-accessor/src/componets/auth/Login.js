@@ -33,7 +33,10 @@ export class Login extends Component {
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6">
-            <form onSubmit={this.handleSubmit} className="mt-5 mb-5 ">
+            <form
+              onSubmit={this.handleSubmit}
+              className="mt-5 mb-5 #1c2a48 mdb-color darken-3 rounded text-white px-2"
+            >
               <legend className="text">Sign In</legend>
               <div>
                 <label htmlFor="email">Email</label>
@@ -63,7 +66,7 @@ export class Login extends Component {
                 />
               </div>
 
-              <button className="mt-3" type="submit">
+              <button className="mt-3 rounded" type="submit">
                 Login
               </button>
               <p className="mt-2">
