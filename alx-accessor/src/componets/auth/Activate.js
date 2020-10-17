@@ -59,7 +59,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    verify: () => dispatch(verify()),
+    verify: (uid,token) => dispatch(verify(uid,token)),
   };
 };
 
