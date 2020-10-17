@@ -21,7 +21,6 @@ export const getAnime = (category) => async (dispatch) => {
       payload: response.data.data,
     });
   } catch (err) {
-    console.log(err);
     dispatch({
       type: GET_ANIME_FAIL,
     });
