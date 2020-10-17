@@ -5,8 +5,8 @@ import Mynavbar from "./componets/layout/MyNavbar";
 import Footer from "./componets/layout/Footer";
 import { connect } from "react-redux";
 import { loadUser, checkAuthStatus } from "./actions/auth";
-import Joke from "./componets/jokes/Joke";
 import { getJokes } from "./actions/Joke";
+import { getAnime } from "./actions/anim";
 
 export class App extends Component {
   constructor(props) {
@@ -18,13 +18,14 @@ export class App extends Component {
     this.props.loadUser();
     this.props.checkAuthStatus();
     this.props.getJokes();
+    this.props.getAnime("action");
   };
   render() {
     return (
       <Router>
-        <div className="App container-fluid">
+        <div className="App container-fluid ">
           <Mynavbar />
-          <Joke />
+
           <Footer />
         </div>
       </Router>
@@ -43,6 +44,7 @@ const mapDispatchToProps = (dispatch) => {
     checkAuthStatus: () => dispatch(checkAuthStatus()),
     loadUser: () => dispatch(loadUser()),
     getJokes: () => dispatch(getJokes()),
+    getAnime: (category) => dispatch(getAnime(category)),
   };
 };
 
