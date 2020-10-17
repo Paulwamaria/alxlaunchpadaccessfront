@@ -135,7 +135,7 @@ export const verify = (uid, token) => async (dispatch) => {
 
   try {
     await axios.post(
-      `${process.env.REACT_APP_API_URL}/auth/users/activation/`,
+      `${process.env.REACT_APP_API_URL}/auth/users/activation/${uid}/${token}`,
       body,
       config
     );

@@ -20,7 +20,6 @@ export class Activate extends Component {
 
   verifyAccount = (event) => {
     event.preventDefault();
-
     const uid = this.props.match.params.uid;
     const token = this.props.match.params.token;
     this.props.verify(uid, token);
@@ -60,7 +59,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    verify: () => dispatch(verify()),
+    verify: (uid, token) => dispatch(verify(uid, token)),
   };
 };
 
