@@ -41,7 +41,10 @@ export class ResetPasswordConfirm extends Component {
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6">
-            <form onSubmit={this.handleSubmit} className="mt-5 mb-5 ">
+            <form
+              onSubmit={this.handleSubmit}
+              className="mt-5 mb-5 #1c2a48 mdb-color darken-3 text-white rounded px-2"
+            >
               <legend className="text">Reset Your Password</legend>
               <div>
                 <label htmlFor="newPassword">New Password</label>
@@ -70,7 +73,7 @@ export class ResetPasswordConfirm extends Component {
                 />
               </div>
 
-              <button className="mt-3" type="submit">
+              <button className="mt-3 rounded" type="submit">
                 Submit
               </button>
               <p className="mt-2">
