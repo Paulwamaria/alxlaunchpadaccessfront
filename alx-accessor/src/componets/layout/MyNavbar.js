@@ -81,15 +81,15 @@ export class MyNavbar extends Component {
           <Route exact path="/register">
             <Register />
           </Route>
-          <Route exact path="/activate/:uid/:token">
-            <Activate />
-          </Route>
+          <Route path="/activate/:uid/:token" component={Activate} />
           <Route exact path="/reset_password">
             <ResetPassword />
           </Route>
-          <Route exact path="/password/reset/confirm:uid/:token">
-            <ResetPasswordConfirm />
-          </Route>
+          <Route
+            exact
+            path="/password/reset/confirm/:uid/:token"
+            component={ResetPasswordConfirm}
+          />
         </Switch>
       </div>
     );
