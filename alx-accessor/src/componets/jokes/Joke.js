@@ -9,16 +9,14 @@ export class Joke extends Component {
 
     this.state = {};
   }
-  componentDidMount = () => {
-    this.props.getJokes();
-  };
+  componentDidMount = () => {};
 
   render() {
     const jokes = this.props.jokes;
     return (
       <Fragment>
         <div>
-          <div />
+          <h5 className="mt-3">Joke Of The Day...</h5>
           <Slider
             options={{
               autoPlay: 8000,
@@ -30,7 +28,7 @@ export class Joke extends Component {
             }}
           >
             {jokes.map((joke, index) => (
-              <div className="card text-center mt-3" key={index}>
+              <div className="card card-joke text-center mt-2" key={index}>
                 <p className="mt-5 text-center">{joke.setup}...</p>
                 <p className="mb-5">
                   <span className="text-success">{joke.punchline}</span>
