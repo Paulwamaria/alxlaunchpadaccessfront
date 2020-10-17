@@ -88,9 +88,9 @@ export const loadUser = () => async (dispatch) => {
 
 // SIGNUP ACTION
 export const signup = (
+  email,
   firstName,
   lastName,
-  email,
   password,
   rePassword
 ) => async (dispatch) => {
@@ -100,9 +100,9 @@ export const signup = (
     },
   };
   const body = JSON.stringify({
+    email,
     firstName,
     lastName,
-    email,
     password,
     rePassword,
   });

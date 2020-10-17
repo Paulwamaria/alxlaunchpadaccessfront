@@ -25,8 +25,8 @@ export class Register extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { firstName, lastName, email, password, rePassword } = this.state;
-    this.props.signup(firstName, lastName, email, password, rePassword);
+    const { email, firstName, lastName, password, rePassword } = this.state;
+    this.props.signup(email, firstName, lastName, password, rePassword);
     this.setState({
       accountCreated: true,
     });
@@ -141,8 +141,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (firstName, lastName, email, password, rePassword) =>
-      dispatch(signup(firstName, lastName, email, password, rePassword)),
+    signup: (email, firstName, lastName, password, rePassword) =>
+      dispatch(signup(email, firstName, lastName, password, rePassword)),
     checkAuthStatus: () => dispatch(checkAuthStatus()),
   };
 };
