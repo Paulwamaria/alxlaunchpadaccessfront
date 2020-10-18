@@ -46,7 +46,7 @@ export class Register extends Component {
         LNameRequired: "Last Name is required!",
       };
       this.props.createMessage(msg);
-    }else if (this.state.rePassword === "") {
+    } else if (this.state.rePassword === "") {
       const msg = {
         ConfirmPassRequired: "Confirm Password is required!",
       };
