@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { resetPassword, checkAuthStatus } from "../../actions/auth";
+import { createMessage } from "../../actions/messages";
 
 export class ResetPassword extends Component {
   constructor(props) {
@@ -21,10 +22,17 @@ export class ResetPassword extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.resetPassword(this.state.email);
-    this.setState({
-      requestSent: true,
-    });
+    if (this.state.email === "") {
+      const msg = {
+        EmailRequired: "Email is required!",
+      };
+      this.props.createMessage(msg);
+    } else {
+      this.props.resetPassword(this.state.email);
+      this.setState({
+        requestSent: true,
+      });
+    }
   };
 
   render() {
@@ -80,6 +88,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     resetPassword: (email) => dispatch(resetPassword(email)),
     checkAuthStatus: () => dispatch(checkAuthStatus()),
+    createMessage: (msg) => dispatch(createMessage(msg)),
   };
 };
 
