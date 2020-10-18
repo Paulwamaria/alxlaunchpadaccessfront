@@ -241,6 +241,14 @@ export const resetPassword = (email) => async (dispatch) => {
       payload: response.data,
     });
   } catch (err) {
+    const errors = {
+      msg: err.response.data,
+      status: err.response.status,
+    };
+    dispatch({
+      type: GET_ERRORS,
+      payload: errors,
+    });
     dispatch({
       type: PASSWORD_RESET_FAIL,
     });
@@ -305,4 +313,5 @@ export const logout = () => (dispatch) => {
   dispatch({
     type: LOGOUT,
   });
+  window.location.reload(true);
 };
