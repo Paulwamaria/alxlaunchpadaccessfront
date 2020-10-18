@@ -73,6 +73,15 @@ export class Alerts extends Component {
       if (message.ReNewPassRequired) {
         alert.error(message.ReNewPassRequired);
       }
+      if (message.FNameRequired) {
+        alert.error(message.FNameRequired);
+      }
+      if (message.LNameRequired) {
+        alert.error(message.LNameRequired);
+      }
+      if (message.ConfirmPassRequired) {
+        alert.error(message.ConfirmPassRequired);
+      }
     }
   };
   render() {
