@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { resetPasswordConfirm, checkAuthStatus } from "../../actions/auth";
+import { createMessage } from "../../actions/messages";
 
 export class ResetPasswordConfirm extends Component {
   constructor(props) {
@@ -22,14 +23,26 @@ export class ResetPasswordConfirm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const uid = this.props.match.params.uid;
-    const token = this.props.match.params.token;
-    const newPassword = this.state.newPassword;
-    const reNewPassword = this.state.reNewPassword;
-    this.props.resetPasswordConfirm(uid, token, newPassword, reNewPassword);
-    this.setState({
-      requestSent: true,
-    });
+    if (this.state.newPassword === "") {
+      const msg = {
+        NewPassRequired: "Password field is required!",
+      };
+      this.props.createMessage(msg);
+    } else if (this.state.reNewPassword === "") {
+      const msg = {
+        ReNewPassRequired: "Password field is required!",
+      };
+      this.props.createMessage(msg);
+    } else {
+      const uid = this.props.match.params.uid;
+      const token = this.props.match.params.token;
+      const newPassword = this.state.newPassword;
+      const reNewPassword = this.state.reNewPassword;
+      this.props.resetPasswordConfirm(uid, token, newPassword, reNewPassword);
+      this.setState({
+        requestSent: true,
+      });
+    }
   };
 
   render() {
@@ -98,6 +111,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     resetPasswordConfirm: () => dispatch(resetPasswordConfirm()),
     checkAuthStatus: () => dispatch(checkAuthStatus()),
+    createMessage: (msg) => dispatch(createMessage(msg)),
   };
 };
 

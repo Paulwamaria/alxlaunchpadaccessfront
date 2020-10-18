@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
+import { createMessage } from "../../actions/messages";
 
 export class Login extends Component {
   constructor(props) {
@@ -21,7 +22,19 @@ export class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.login(this.state.email, this.state.password);
+    if (this.state.password === "") {
+      const msg = {
+        PassRequired: "Password field is required!",
+      };
+      this.props.createMessage(msg);
+    } else if (this.state.email === "") {
+      const msg = {
+        EmailRequired: "Email is required!",
+      };
+      this.props.createMessage(msg);
+    } else {
+      this.props.login(this.state.email, this.state.password);
+    }
   };
 
   render() {
@@ -94,6 +107,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (email, password) => dispatch(login(email, password)),
+    createMessage: (msg) => dispatch(createMessage(msg)),
   };
 };
 
