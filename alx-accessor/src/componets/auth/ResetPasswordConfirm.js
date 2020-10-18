@@ -34,15 +34,15 @@ export class ResetPasswordConfirm extends Component {
       };
       this.props.createMessage(msg);
     } else {
+      const uid = this.props.match.params.uid;
+      const token = this.props.match.params.token;
+      const newPassword = this.state.newPassword;
+      const reNewPassword = this.state.reNewPassword;
+      this.props.resetPasswordConfirm(uid, token, newPassword, reNewPassword);
+      this.setState({
+        requestSent: true,
+      });
     }
-    const uid = this.props.match.params.uid;
-    const token = this.props.match.params.token;
-    const newPassword = this.state.newPassword;
-    const reNewPassword = this.state.reNewPassword;
-    this.props.resetPasswordConfirm(uid, token, newPassword, reNewPassword);
-    this.setState({
-      requestSent: true,
-    });
   };
 
   render() {

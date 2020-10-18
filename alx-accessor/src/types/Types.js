@@ -18,5 +18,5 @@ export const GET_JOKE_FAIL = "GET_JOKE_FAIL";
 export const GET_ANIME_SUCCESS = "GET_ANIME_SUCCESS";
 export const GET_ANIME_FAIL = "GET_ANIME_FAIL";
 export const GET_ERRORS = "GET_ERRORS";
-export const GET_MESSAGES = 'GET_MESSAGES'
-export const CREATE_MESSAGE = 'CREATE_MESSAGE'
+export const GET_MESSAGES = "GET_MESSAGES";
+export const CREATE_MESSAGE = "CREATE_MESSAGE";
