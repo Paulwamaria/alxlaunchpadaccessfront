@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signup, checkAuthStatus } from "../../actions/auth";
+import { createMessage } from "../../actions/messages";
 
 export class Register extends Component {
   constructor(props) {
@@ -25,11 +26,33 @@ export class Register extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { email, firstName, lastName, password, rePassword } = this.state;
-    this.props.signup(email, firstName, lastName, password, rePassword);
-    this.setState({
-      accountCreated: true,
-    });
+    if (this.state.password === "") {
+      const msg = {
+        PassRequired: "Password field is required!",
+      };
+      this.props.createMessage(msg);
+    } else if (this.state.email === "") {
+      const msg = {
+        EmailRequired: "Email is required!",
+      };
+      this.props.createMessage(msg);
+    } else if (this.state.firstName === "") {
+      const msg = {
+        FNameRequired: "First Name is required!",
+      };
+      this.props.createMessage(msg);
+    } else if (this.state.lastName === "") {
+      const msg = {
+        LNameRequired: "Last Name is required!",
+      };
+      this.props.createMessage(msg);
+    } else {
+      const { email, firstName, lastName, password, rePassword } = this.state;
+      this.props.signup(email, firstName, lastName, password, rePassword);
+      this.setState({
+        accountCreated: true,
+      });
+    }
   };
 
   render() {
@@ -144,6 +167,7 @@ const mapDispatchToProps = (dispatch) => {
     signup: (email, firstName, lastName, password, rePassword) =>
       dispatch(signup(email, firstName, lastName, password, rePassword)),
     checkAuthStatus: () => dispatch(checkAuthStatus()),
+    createMessage: (msg) => dispatch(createMessage(msg)),
   };
 };
 
