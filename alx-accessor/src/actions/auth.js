@@ -14,6 +14,8 @@ import {
   SIGNUP_SUCCESS,
   ACTIVATION_FAIL,
   ACTIVATION_SUCCESS,
+  GET_ERRORS,
+  CREATE_MESSAGE,
 } from "../types/Types";
 import axios from "axios";
 
@@ -113,6 +115,14 @@ export const signup = (
       body,
       config
     );
+    const msg = {
+      AccountDetails:
+        "Account details received, please check your email to activate account",
+    };
+    dispatch({
+      type: CREATE_MESSAGE,
+      payload: msg,
+    });
     dispatch({
       type: SIGNUP_SUCCESS,
       payload: response.data,
@@ -120,6 +130,14 @@ export const signup = (
   } catch (err) {
     dispatch({
       type: SIGNUP_FAIL,
+    });
+    const errors = {
+      msg: err.response.data,
+      status: err.response.status,
+    };
+    dispatch({
+      type: GET_ERRORS,
+      payload: errors,
     });
   }
 };
@@ -139,10 +157,22 @@ export const verify = (uid, token) => async (dispatch) => {
       body,
       config
     );
+    const msg = {
+      AccountVerified: "Your account has been verified!",
+    };
     dispatch({
       type: ACTIVATION_SUCCESS,
+      payload: msg,
     });
   } catch (err) {
+    const errors = {
+      msg: err.response.data,
+      status: err.response.status,
+    };
+    dispatch({
+      type: GET_ERRORS,
+      payload: errors,
+    });
     dispatch({
       type: ACTIVATION_FAIL,
     });
@@ -171,6 +201,14 @@ export const login = (email, password) => async (dispatch) => {
     //LOAD THE USER AFTER LOGIN
     dispatch(loadUser());
   } catch (err) {
+    const errors = {
+      msg: err.response.data,
+      status: err.response.status,
+    };
+    dispatch({
+      type: GET_ERRORS,
+      payload: errors,
+    });
     dispatch({
       type: LOGIN_FAIL,
     });
@@ -191,6 +229,13 @@ export const resetPassword = (email) => async (dispatch) => {
       body,
       config
     );
+    const msg = {
+      RequestPassReset: "Request received, kindly check your email to proceed.",
+    };
+    dispatch({
+      type: CREATE_MESSAGE,
+      payload: msg,
+    });
     dispatch({
       type: PASSWORD_RESET_SUCCESS,
       payload: response.data,
@@ -217,8 +262,8 @@ export const resetPasswordConfirm = (
   const body = JSON.stringify({
     uid,
     token,
-    newPassword,
-    reNewPassword,
+    new_password: newPassword,
+    re_new_password: reNewPassword,
   });
   try {
     const response = await axios.post(
@@ -226,11 +271,29 @@ export const resetPasswordConfirm = (
       body,
       config
     );
+    const message = {
+      PassResetConfirm: "Password was changed successfully",
+    };
+    dispatch({
+      type: CREATE_MESSAGE,
+      payload: message,
+    });
     dispatch({
       type: PASSWORD_RESET_CONFIRM_SUCCESS,
       payload: response.data,
     });
+    dispatch({
+      type: LOGOUT,
+    });
   } catch (err) {
+    const errors = {
+      msg: err.response.data,
+      status: err.response.status,
+    };
+    dispatch({
+      type: GET_ERRORS,
+      payload: errors,
+    });
     dispatch({
       type: PASSWORD_RESET_CONFIRM_FAIL,
     });
