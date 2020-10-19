@@ -31,6 +31,11 @@ export class Register extends Component {
         PassRequired: "Password field is required!",
       };
       this.props.createMessage(msg);
+    } else if (this.state.rePassword === this.state.password) {
+      const msg = {
+        PasswordsNoMatch: "Passwords do not match!",
+      };
+      this.props.createMessage(msg);
     } else if (this.state.email === "") {
       const msg = {
         EmailRequired: "Email is required!",
@@ -49,11 +54,6 @@ export class Register extends Component {
     } else if (this.state.rePassword === "") {
       const msg = {
         ConfirmPassRequired: "Confirm Password is required!",
-      };
-      this.props.createMessage(msg);
-    } else if (this.state.rePassword === this.state.password) {
-      const msg = {
-        PasswordsNoMatch: "Passwords do not match!",
       };
       this.props.createMessage(msg);
     } else {
