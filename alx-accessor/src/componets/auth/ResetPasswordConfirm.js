@@ -109,7 +109,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    resetPasswordConfirm: () => dispatch(resetPasswordConfirm()),
+    resetPasswordConfirm: (uid, token, newPassword, reNewPassword) =>
+      dispatch(resetPasswordConfirm(uid, token, newPassword, reNewPassword)),
     checkAuthStatus: () => dispatch(checkAuthStatus()),
     createMessage: (msg) => dispatch(createMessage(msg)),
   };
