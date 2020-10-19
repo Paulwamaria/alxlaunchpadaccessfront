@@ -38,16 +38,16 @@ export class Alerts extends Component {
         alert.error(`Uid: ${error.message.uid.join()}`);
       }
       if (error.msg.detail) {
-        alert.error(error.msg.detail.join());
+        alert.error(error.msg.detail);
       }
       if (error.msg.new_password) {
-        alert.error(error.msg.new_password.join());
+        alert.error(error.msg.new_password);
       }
       if (error.msg.re_new_password) {
-        alert.error(error.msg.re_new_password.join());
+        alert.error(error.msg.re_new_password);
       }
       if (error.msg.non_field_errors) {
-        alert.error(error.msg.non_field_errors.join());
+        alert.error(error.msg.non_field_errors);
       }
     }
 
