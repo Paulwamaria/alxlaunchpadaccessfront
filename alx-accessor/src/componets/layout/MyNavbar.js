@@ -11,6 +11,7 @@ import About from "./About";
 import Licence from "./Licence";
 import { logout } from "../../actions/auth";
 import { connect } from "react-redux";
+import PrivateRoute from "../common/PrivateRoute";
 
 export class MyNavbar extends Component {
   constructor(props) {
@@ -65,9 +66,7 @@ export class MyNavbar extends Component {
           </Navbar.Collapse>
         </Navbar>
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+          <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/about">
             <About />
           </Route>

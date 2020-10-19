@@ -46,6 +46,11 @@ export class Register extends Component {
         LNameRequired: "Last Name is required!",
       };
       this.props.createMessage(msg);
+    } else if (this.state.rePassword === "") {
+      const msg = {
+        ConfirmPassRequired: "Confirm Password is required!",
+      };
+      this.props.createMessage(msg);
     } else {
       const { email, firstName, lastName, password, rePassword } = this.state;
       this.props.signup(email, firstName, lastName, password, rePassword);
