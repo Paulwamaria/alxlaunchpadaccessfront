@@ -85,8 +85,8 @@ export class Alerts extends Component {
       if (message.ConfirmPassRequired) {
         alert.error(message.ConfirmPassRequired);
       }
-      if (message.PasswordsNotMatch) {
-        alert.error(message.PasswordsNotMatch);
+      if (message.PasswordsNoMatch) {
+        alert.error(message.PasswordsNoMatch);
       }
     }
   };

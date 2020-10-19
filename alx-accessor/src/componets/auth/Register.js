@@ -31,7 +31,7 @@ export class Register extends Component {
         PassRequired: "Password field is required!",
       };
       this.props.createMessage(msg);
-    } else if (this.state.rePassword === this.state.password) {
+    } else if (this.state.rePassword !== this.state.password) {
       const msg = {
         PasswordsNoMatch: "Passwords do not match!",
       };
