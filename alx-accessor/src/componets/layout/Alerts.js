@@ -32,19 +32,22 @@ export class Alerts extends Component {
         alert.error(`Re_Password: ${error.msg.re_password.join()}`);
       }
       if (error.msg.token) {
-        alert.error(`Token: ${error.message.token}`);
+        alert.error(`Token: ${error.message.token.join()}`);
       }
       if (error.msg.uid) {
-        alert.error(`Uid: ${error.message.uid}`);
+        alert.error(`Uid: ${error.message.uid.join()}`);
       }
       if (error.msg.detail) {
-        alert.error(error.msg.detail);
+        alert.error(error.msg.detail.join());
       }
       if (error.msg.new_password) {
-        alert.error(error.msg.new_password);
+        alert.error(error.msg.new_password.join());
       }
       if (error.msg.re_new_password) {
-        alert.error(error.msg.re_new_password);
+        alert.error(error.msg.re_new_password.join());
+      }
+      if (error.msg.non_field_errors) {
+        alert.error(error.msg.non_field_errors.join());
       }
     }
 
@@ -81,6 +84,9 @@ export class Alerts extends Component {
       }
       if (message.ConfirmPassRequired) {
         alert.error(message.ConfirmPassRequired);
+      }
+      if (message.PasswordsNotMatch) {
+        alert.error(message.PasswordsNotMatch);
       }
     }
   };
