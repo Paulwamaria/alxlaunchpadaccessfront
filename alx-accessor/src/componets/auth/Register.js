@@ -15,12 +15,19 @@ export class Register extends Component {
       password: "",
       rePassword: "",
       accountCreated: false,
+      hidden: true,
     };
   }
 
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
+    });
+  };
+
+  toggleVisibility = () => {
+    this.setState({
+      hidden: !this.state.hidden,
     });
   };
 
@@ -125,7 +132,7 @@ export class Register extends Component {
               <div>
                 <input
                   className="form-control"
-                  type="text"
+                  type={this.state.hidden ? "password" : "text"}
                   id="password"
                   name="password"
                   value={this.state.password}
@@ -139,7 +146,7 @@ export class Register extends Component {
               <div>
                 <input
                   className="form-control"
-                  type="text"
+                  type={this.state.hidden ? "password" : "text"}
                   id="rePassword"
                   name="rePassword"
                   value={this.state.rePassword}
@@ -150,6 +157,12 @@ export class Register extends Component {
               <button className="mt-3 rounded" type="submit">
                 Signup
               </button>
+              <i
+                onClick={this.toggleVisibility}
+                class={
+                  this.state.hidden ? "fa fa-eye mx-2" : "fa fa-eye-slash mx-2"
+                }
+              ></i>
               <p className="mt-2">
                 Already have an account? <Link to="/login">Login</Link>
               </p>
