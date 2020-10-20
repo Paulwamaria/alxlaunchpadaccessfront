@@ -3,7 +3,6 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signup, checkAuthStatus } from "../../actions/auth";
 import { createMessage } from "../../actions/messages";
-import { transitions } from "react-alert";
 
 export class Register extends Component {
   constructor(props) {

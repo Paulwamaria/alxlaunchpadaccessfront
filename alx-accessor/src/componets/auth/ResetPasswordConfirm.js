@@ -12,15 +12,15 @@ export class ResetPasswordConfirm extends Component {
       newPassword: "",
       reNewPassword: "",
       requestSent: false,
-      hidden:true,
+      hidden: true,
     };
   }
 
-  toggleVisibility = ()=>{
+  toggleVisibility = () => {
     this.setState({
-      hidden:!this.state.hidden,
-    })
-  }
+      hidden: !this.state.hidden,
+    });
+  };
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -71,7 +71,7 @@ export class ResetPasswordConfirm extends Component {
               <div>
                 <input
                   className="form-control"
-                  type={this.state.hidden?"password":"text"}
+                  type={this.state.hidden ? "password" : "text"}
                   id="newPassword"
                   name="newPassword"
                   value={this.state.newPassword}
@@ -84,7 +84,7 @@ export class ResetPasswordConfirm extends Component {
               <div>
                 <input
                   className="form-control"
-                  type={this.state.hidden?"password":"text"}
+                  type={this.state.hidden ? "password" : "text"}
                   id="reNewPassword"
                   name="reNewPassword"
                   value={this.state.reNewPassword}
@@ -95,7 +95,12 @@ export class ResetPasswordConfirm extends Component {
               <button className="mt-3 rounded" type="submit">
                 Submit
               </button>
-              <i onClick={this.toggleVisibility} class={this.state.hidden? "fa fa-eye mx-2":"fa fa-eye-slash mx-2"}></i>
+              <i
+                onClick={this.toggleVisibility}
+                class={
+                  this.state.hidden ? "fa fa-eye mx-2" : "fa fa-eye-slash mx-2"
+                }
+              ></i>
               <p className="mt-2">
                 Go back to login? <Link to="/login">Login</Link>
               </p>
