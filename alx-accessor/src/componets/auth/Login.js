@@ -11,12 +11,19 @@ export class Login extends Component {
     this.state = {
       email: "",
       password: "",
+      hidden: true,
     };
   }
 
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
+    });
+  };
+
+  toggleVisibility = () => {
+    this.setState({
+      hidden: !this.state.hidden,
     });
   };
 
@@ -71,7 +78,7 @@ export class Login extends Component {
               <div>
                 <input
                   className="form-control"
-                  type="text"
+                  type={this.state.hidden ? "password" : "text"}
                   id="password"
                   name="password"
                   value={this.state.password}
@@ -82,6 +89,7 @@ export class Login extends Component {
               <button className="mt-3 rounded" type="submit">
                 Login
               </button>
+              <i onClick={this.toggleVisibility} class={this.state.hidden? "fa fa-eye mx-2":"fa fa-eye-slash mx-2"}></i>
               <p className="mt-2">
                 Don't have an account? <Link to="/register">Sign up</Link>
               </p>
