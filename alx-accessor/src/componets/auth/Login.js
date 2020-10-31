@@ -89,7 +89,7 @@ export class Login extends Component {
               <button className="mt-3 rounded" type="submit">
                 Login
               </button>
-              <i onClick={this.toggleVisibility} class={this.state.hidden? "fa fa-eye mx-2":"fa fa-eye-slash mx-2"}></i>
+              <i onClick={this.toggleVisibility} className={this.state.hidden? "fa fa-eye mx-2":"fa fa-eye-slash mx-2"}></i>
               <p className="mt-2">
                 Don't have an account? <Link to="/register">Sign up</Link>
               </p>
