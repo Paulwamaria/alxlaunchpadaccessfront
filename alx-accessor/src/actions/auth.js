@@ -16,6 +16,8 @@ import {
   ACTIVATION_SUCCESS,
   GET_ERRORS,
   CREATE_MESSAGE,
+  REQUEST_USER_DELETE,
+  USER_DELETE_SUCCESS,
 } from "../types/Types";
 import axios from "axios";
 
@@ -314,4 +316,51 @@ export const logout = () => (dispatch) => {
     type: LOGOUT,
   });
   window.location.reload(true);
+};
+
+// REQUEST_USER_DELETE
+export const deleteUser = (current_password) => (dispatch) => {
+  dispatch({
+    type: REQUEST_USER_DELETE,
+  });
+
+  var data = JSON.stringify({ current_password });
+  if (localStorage.getItem("access")) {
+    var config = {
+      method: "delete",
+      url: "https://alxaccessor-api.herokuapp.com/auth/users/me/",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access")}`,
+        Accept: "application/json",
+      },
+      data: data,
+    };
+  }
+
+  axios(config)
+    .then(function (response) {
+      const msg = {
+        AccountDeleted: "Account successfully deleted",
+      };
+      dispatch({
+        type: CREATE_MESSAGE,
+        payload: msg,
+      });
+      dispatch({
+        type: USER_DELETE_SUCCESS,
+      });
+      window.location.reload(true);
+      dispatch(logout());
+    })
+    .catch(function (error) {
+      const errors = {
+        msg: error.response.data,
+        status: error.response.status,
+      };
+      dispatch({
+        type: GET_ERRORS,
+        payload: errors,
+      });
+    });
 };
