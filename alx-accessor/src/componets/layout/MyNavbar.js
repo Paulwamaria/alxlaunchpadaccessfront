@@ -12,6 +12,7 @@ import Licence from "./Licence";
 import { logout } from "../../actions/auth";
 import { connect } from "react-redux";
 import PrivateRoute from "../common/PrivateRoute";
+import DeleteUser from "../auth/DeleteUser";
 
 export class MyNavbar extends Component {
   constructor(props) {
@@ -51,7 +52,9 @@ export class MyNavbar extends Component {
                         <Dropdown.Item onClick={this.props.logout}>
                           logout
                         </Dropdown.Item>
-                        <Dropdown.Item href="/">Admin</Dropdown.Item>
+                        <Dropdown.Item href="/auth/users/me/">
+                          Remove Account
+                        </Dropdown.Item>
                       </Fragment>
                     ) : (
                       <Fragment>
@@ -67,6 +70,7 @@ export class MyNavbar extends Component {
         </Navbar>
         <Switch>
           <PrivateRoute exact path="/" component={Home} />
+          <Route exact path="/auth/users/me/" component={DeleteUser} />
           <Route exact path="/about">
             <About />
           </Route>
