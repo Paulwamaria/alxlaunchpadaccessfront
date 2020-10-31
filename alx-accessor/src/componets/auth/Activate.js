@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { verify } from "../../actions/auth";
+import { createMessage } from "../../actions/messages";
 
 export class Activate extends Component {
   constructor(props) {
@@ -26,6 +27,10 @@ export class Activate extends Component {
     this.setState({
       verified: true,
     });
+    const msg = {
+      AccountVerified: "Account successfully verified!",
+    };
+    this.props.createMessage(msg);
   };
 
   render() {
@@ -60,6 +65,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     verify: (uid, token) => dispatch(verify(uid, token)),
+    createMessage: (msg) => dispatch(createMessage(msg)),
   };
 };
 
